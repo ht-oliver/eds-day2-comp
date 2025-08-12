@@ -93,3 +93,44 @@ class(vegetables)
 vegetables[1,2]
 vegetables[1,1] <- "zucchini"
 vegetables
+
+
+# Select multiple elements
+n <- 1:10 #sequence 1-10 (stored as a vector)
+n[c(3, 1, 5 )] #show me position 3, 1 and 5 in that vector
+
+#exclude elements
+n[-10] #show me n without showing me the 10th element
+n[-c(2,4,6,8)] #show me n without the 2nd, 4th, 6th or 8th element
+
+# Logical vectors. Picking what you want the terminal to return
+n[c(TRUE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE)] 
+n[n > 3]
+
+# Subsetting and assigning multiple values
+n2 <- 1:5
+n2[c(1, 2)] <- 2:3
+n2
+
+n2[-1] <- 4:1
+n2
+
+# Subset rows in data frames based on conditions (logical subsetting)
+mtcars # native R dataset
+mtcars [mtcars$mpg > 25, ] #show me cars with hp > 5
+
+# Make a subset of NY winds as an object
+airquality
+highwind_ny <- subset(airquality, Wind > 15)
+highwind_ny
+
+# Remove columns
+df <- data.frame(n = 1:3,
+                 m = 3:1,
+                 d = c("a", "b", "c"))
+df
+
+df$z = NULL
+df[c("n", "m")] # Show me n and m
+df[setdiff(names(df), "d")] # Keep everything but "d"
+
